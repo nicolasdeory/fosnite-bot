@@ -9,6 +9,6 @@
     "venom-bot": "^3.0.8"
   },
   "scripts": {
-    "app": "tsc && node ./build/index.js"
+    "start": "tsc && node ./build/index.js"
   }
 }
