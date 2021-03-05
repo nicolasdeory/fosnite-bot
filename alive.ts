@@ -12,20 +12,20 @@ export default class Alive {
     constructor(client: Whatsapp)
     {
         this.client = client;
-        this.pingTimer = setTimeout(this.ping, Alive.PING_INTERVAL)
+        this.pingTimer = setTimeout(() => this.ping(), Alive.PING_INTERVAL)
     }
 
     ping()
     {
         this.client.sendText(process.env.WHATSAPP_NUMBER!, "ping");
-        this.pingTimeout = setTimeout(this.onTimedOut, Alive.TIMEOUT);
+        this.pingTimeout = setTimeout(() => this.onTimedOut(), Alive.TIMEOUT);
     }
 
     receivedMessage()
     {
         clearTimeout(this.pingTimer);
         if (this.pingTimeout) clearTimeout(this.pingTimeout);
-        this.pingTimer = setTimeout(this.ping, Alive.PING_INTERVAL)
+        this.pingTimer = setTimeout(() => this.ping(), Alive.PING_INTERVAL)
     }
 
     onTimedOut()
