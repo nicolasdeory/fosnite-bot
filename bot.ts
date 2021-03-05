@@ -26,7 +26,9 @@ function bot(client: venom.Whatsapp)
 
     client.onAnyMessage((message) =>
     {
-        console.log(message.from + ": " + message.body);
+        if (!message.fromMe)
+            console.log(message.from + ": " + message.body);
+        
         for (let i = 0; i < commands.length; i++) {
             const cmd = commands[i];
             if (cmd.match(message.body))

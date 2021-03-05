@@ -12,7 +12,6 @@ const repository_toMap: Record<number, string> = {
  */
 export default function githubissue(client: Whatsapp, data: any)
 {
-    console.log(data);
     const repo = data.repository.id;
     const destination = repository_toMap[repo];
     if (destination)
@@ -21,13 +20,14 @@ export default function githubissue(client: Whatsapp, data: any)
         if (data.action === "closed")
         {
             text = `Closed issue *#${data.issue.number}* - ${data.issue.title}.\nClosed by ${data.sender.login}.`;
-        } else if (data.action === "opened")
+        } else if (data.action === "opened" || data.action === "reopened")
         {
             text = `Opened issue *#${data.issue.number}* - ${data.issue.title}.\nOpened by ${data.sender.login}.`;
         } else if (data.action === "assigned")
         {
             text = `${data.sender.login} assigned issue *#${data.issue.number}* - ${data.issue.title} to ${data.issue.assignee}.`
         }
-        client.sendText(destination, `*-- GITHUB NOTIFICATION --*\n\n${text}`)
+        if (text)
+            client.sendText(destination, `*-- GITHUB NOTIFICATION --*\n\n${text}`)
     }
 }
