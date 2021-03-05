@@ -6,7 +6,7 @@ function gracias(client:Whatsapp, message: Message)
     if (message.fromMe)
         return;
         
-    client.reply(message.chatId, "gracias", message.id);
+    client.reply(message.chatId, "a ti", message.id);
     client.sendImageAsSticker(message.chatId, "./javier troya.jpg");
 }
 
