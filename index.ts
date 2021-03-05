@@ -16,7 +16,7 @@ create('test2',(base64Qrimg, asciiQR, attempts) => {}, (statusSession, session) 
 
 const app = express();
 
-app.get('/githubwebhook', (req,res) =>
+app.post('/githubwebhook', (req,res) =>
 {
     github(whatsappClient, req.body)
 });
