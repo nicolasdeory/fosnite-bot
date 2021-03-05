@@ -7,6 +7,7 @@ import nopuedo from "./commands/no-puedo";
 import gracias from "./commands/gracias";
 import cardano from "./commands/cardano";
 import fortniteDance from "./commands/fortnite-dance";
+import Alive from "./alive";
 
 interface Command {
     match: (m: string) => boolean,
@@ -24,8 +25,12 @@ function bot(client: venom.Whatsapp)
         gracias
     ];
 
+    const alive = new Alive(client);
+
     client.onAnyMessage((message) =>
     {
+        alive.receivedMessage();
+
         if (!message.fromMe)
             console.log(message.from + ": " + message.body);
         
