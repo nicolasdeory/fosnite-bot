@@ -3,7 +3,7 @@ import bot from "./bot";
 
 import express from "express";
 
-create('test2',(base64Qrimg, asciiQR, attempts) => {}, (statusSession, session) => {}, { useChrome: false, browserArgs: ['--no-sandbox'] })
+create('test2',(base64Qrimg, asciiQR, attempts) => {}, (statusSession, session) => {console.log(statusSession)}, { useChrome: false, browserArgs: ['--no-sandbox'] })
 .then((client) => bot(client))
 .catch((error) => console.log(error));
 
