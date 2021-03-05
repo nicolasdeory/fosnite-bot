@@ -42,6 +42,10 @@ function bot(client: venom.Whatsapp)
                 break;
             }
         }
+    }).catch((r) =>
+    {
+        console.error("ERROR HANDLING MESSAGE");
+        console.error(r);
     });
 }
 

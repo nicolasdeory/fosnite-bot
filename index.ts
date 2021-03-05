@@ -5,6 +5,9 @@ import express from "express";
 import github from "./commands/github/issue";
 import bodyParser from "body-parser";
 import githubissue from "./commands/github/issue";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 let whatsappClient: Whatsapp;
 
@@ -39,3 +42,7 @@ app.get('/', (req, res) =>
 });
 
 app.listen(process.env.PORT, () => console.log("server listening"));
+
+process.on('unhandledRejection', up => { throw up });
+process.on('uncaughtExceptionMonitor', e => {throw e});
+process.on('uncaughtException', e => {throw e});
