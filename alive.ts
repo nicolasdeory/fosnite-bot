@@ -2,8 +2,8 @@ import { Whatsapp } from "venom-bot";
 
 export default class Alive {
     
-    static TIMEOUT = 30;
-    static PING_INTERVAL = 60;
+    static TIMEOUT = 3000;
+    static PING_INTERVAL = 6000;
 
     client: Whatsapp;
     pingTimer: NodeJS.Timeout;
