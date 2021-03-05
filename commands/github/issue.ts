@@ -3,9 +3,9 @@ import {Message, Whatsapp} from "venom-bot";
 import conditions from "../../conditions";
 
 // Repo Id - Destination Number Id
-// const repository_toMap: Record<number, string> = {
-//     344437361: "asdsa"
-// }
+const repository_toMap: Record<number, string> = {
+    344437361: "34675406061-1614020708@g.us"
+}
 
 /**
  * Automatic
@@ -13,15 +13,21 @@ import conditions from "../../conditions";
 export default function githubissue(client: Whatsapp, data: any)
 {
     console.log(data);
-    // client.sendText()
-    if (data.action === "")
-        return;
-    // axios.get("https://blockchain.info/ticker")
-    //         .then(resp =>
-    //             {
-    //                 const price = resp.data.EUR.last;
-    //                 const randomResps = ["Ahora mismo btc está en {} euros", "Btc a {} euros", "Illo ahora esta como en {} euros", "a {} lereles esta btc", "{} euros", "{} euros btc nice cock"];
-    //                 const random = randomResps[Math.floor(Math.random() * randomResps.length)];
-    //                 client.reply(message.chatId, random.replace("{}", price), message.id);
-    //             });
+    const repo = data.repository.id;
+    const destination = repository_toMap[repo];
+    if (destination)
+    {
+        let text;
+        if (data.action === "closed")
+        {
+            text = `Closed issue *#${data.issue.number}* - ${data.issue.title}.\nClosed by ${data.sender.login}.`;
+        } else if (data.action === "opened")
+        {
+            text = `Opened issue *#${data.issue.number}* - ${data.issue.title}.\nOpened by ${data.sender.login}.`;
+        } else if (data.action === "assigned")
+        {
+            text = `${data.sender.login} assigned issue *#${data.issue.number}* - ${data.issue.title} to ${data.issue.assignee}.`
+        }
+        client.sendText(destination, `*-- GITHUB NOTIFICATION --*\n\n${text}`)
+    }
 }
