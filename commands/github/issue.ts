@@ -25,7 +25,7 @@ export default function githubissue(client: Whatsapp, data: any)
             text = `Opened issue *#${data.issue.number}* - ${data.issue.title}.\nOpened by ${data.sender.login}.`;
         } else if (data.action === "assigned")
         {
-            text = `${data.sender.login} assigned issue *#${data.issue.number}* - ${data.issue.title} to ${data.issue.assignee}.`
+            text = `${data.sender.login} assigned issue *#${data.issue.number}* - ${data.issue.title} to ${data.issue.assignee.login}.`
         }
         if (text)
             client.sendText(destination, `*-- GITHUB NOTIFICATION --*\n\n${text}`)
