@@ -1,13 +1,21 @@
 import axios from "axios";
 import {Message, Whatsapp} from "venom-bot";
-import conditions from "../conditions";
+import conditions from "../../conditions";
+
+// Repo Id - Destination Number Id
+// const repository_toMap: Record<number, string> = {
+//     344437361: "asdsa"
+// }
 
 /**
  * Automatic
  */
-export default function github(client: Whatsapp, data: any)
+export default function githubissue(client: Whatsapp, data: any)
 {
     console.log(data);
+    // client.sendText()
+    if (data.action === "")
+        return;
     // axios.get("https://blockchain.info/ticker")
     //         .then(resp =>
     //             {
