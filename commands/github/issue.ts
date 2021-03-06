@@ -1,6 +1,7 @@
 import axios from "axios";
 import {Message, Whatsapp} from "venom-bot";
 import conditions from "../../conditions";
+import whatsapp from "../../whatsapp";
 
 // Repo Id - Destination Number Id
 const repository_toMap: Record<number, string> = {
@@ -10,8 +11,12 @@ const repository_toMap: Record<number, string> = {
 /**
  * Automatic
  */
-export default function githubissue(client: Whatsapp, data: any)
+export default function githubissue(data: any)
 {
+    const client = whatsapp.client;
+    if (!client)
+        return;
+        
     const repo = data.repository.id;
     const destination = repository_toMap[repo];
     if (destination)

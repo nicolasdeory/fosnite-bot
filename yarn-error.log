@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Nico\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add dotnev
+  C:\Program Files\nodejs\node.exe C:\Users\Nico\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add gramjs
 
 PATH: 
-  D:\Oculus\Support\oculus-runtime;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\OpenSSL-Win64\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Users\Nico\AppData\Local\Microsoft\WindowsApps;C:\Users\Nico\.dotnet\tools;C:\Program Files\AutoFirma\AutoFirma;C:\Users\Nico\AppData\Local\Programs\Python\Python37\Scripts;C:\Program Files\wkhtmltopdf\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\TDM-GCC-64\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC;C:\Program Files\PuTTY\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\Android\android-sdk\platform-tools;C:\Program Files (x86)\Android\android-sdk\tools;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;E:\Documentos\CURSOS\3º SOFTWARE 2020-2021\DP2\Workspace-21.1\Tools\geckodriver-0.29.0;C:\Program Files\Mozilla Firefox;C:\Program Files\nodejs\;C:\Users\Nico\scoop\shims;C:\Ruby26-x64\bin;C:\Users\Nico\AppData\Local\Microsoft\WindowsApps;C:\Users\Nico\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\DebugPAS;C:\Program Files\heroku\bin;C:\Users\Nico\AppData\Local\Microsoft\WindowsApps;C:\Users\Nico\AppData\Local\gitkraken\bin;C:\Users\Nico\.dotnet\tools;C:\Users\Nico\AppData\Roaming\npm
+  D:\Oculus\Support\oculus-runtime;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\OpenSSL-Win64\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Users\Nico\AppData\Local\Microsoft\WindowsApps;C:\Users\Nico\.dotnet\tools;C:\Program Files\AutoFirma\AutoFirma;C:\Users\Nico\AppData\Local\Programs\Python\Python37\Scripts;C:\Program Files\wkhtmltopdf\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\TDM-GCC-64\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC;C:\Program Files\PuTTY\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\Android\android-sdk\platform-tools;C:\Program Files (x86)\Android\android-sdk\tools;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;E:\Documentos\CURSOS\3º SOFTWARE 2020-2021\DP2\Workspace-21.1\Tools\geckodriver-0.29.0;C:\Program Files\Mozilla Firefox;C:\Program Files\nodejs\;C:\Users\Nico\scoop\shims;C:\Ruby26-x64\bin;C:\Users\Nico\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\DebugPAS;C:\Program Files\heroku\bin;C:\Users\Nico\AppData\Local\gitkraken\bin;C:\Users\Nico\AppData\Roaming\npm
 
 Yarn version: 
   1.22.4
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/dotnev: Not found
+  Error: https://registry.yarnpkg.com/gramjs: Not found
       at Request.params.callback [as _callback] (C:\Users\Nico\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66987:18)
       at Request.self.callback (C:\Users\Nico\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140748:22)
       at Request.emit (node:events:378:20)
@@ -35,6 +35,7 @@ npm manifest:
     "dependencies": {
       "@types/express": "^4.17.11",
       "axios": "^0.21.1",
+      "dotenv": "^8.2.0",
       "esbuild": "^0.8.55",
       "express": "^4.17.1",
       "typescript": "^4.2.3",
@@ -264,7 +265,7 @@ Lockfile:
       inherits "^2.0.4"
       readable-stream "^3.4.0"
   
-  body-parser@1.19.0, body-parser@^1.19.0:
+  body-parser@1.19.0:
     version "1.19.0"
     resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
     integrity sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
@@ -583,6 +584,11 @@ Lockfile:
     version "0.0.818844"
     resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.818844.tgz#d1947278ec85b53e4c8ca598f607a28fa785ba9e"
     integrity sha512-AD1hi7iVJ8OD0aMLQU5VK0XH9LDlA1+BcPIgrAxPfaibx2DbWucuyOhc4oyQCbnvDDO68nN6/LcKfqTP343Jjg==
+  
+  dotenv@^8.2.0:
+    version "8.2.0"
+    resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+    integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
   
   duplexer3@^0.1.4:
     version "0.1.4"

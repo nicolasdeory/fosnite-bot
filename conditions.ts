@@ -1,4 +1,5 @@
 export default {
+    any: () => (m: string) => true,
     exact: (text: string) => {
         return (m: string) => text === m;
     },

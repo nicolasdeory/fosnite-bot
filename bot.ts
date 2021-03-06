@@ -11,7 +11,8 @@ import Alive from "./alive";
 
 interface Command {
     match: (m: string) => boolean,
-    command: (client : venom.Whatsapp, message: venom.Message) => void
+    command: (client : venom.Whatsapp, message: venom.Message) => void,
+    allowFurtherProcessing?: boolean
 }
 
 function bot(client: venom.Whatsapp)
@@ -39,7 +40,8 @@ function bot(client: venom.Whatsapp)
             if (cmd.match(message.body))
             {
                 cmd.command(client, message);
-                break;
+                if (!cmd.allowFurtherProcessing)
+                    break;
             }
         }
     }).catch((r) =>

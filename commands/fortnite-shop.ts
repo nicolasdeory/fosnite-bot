@@ -7,11 +7,18 @@ function fortnite(client: Whatsapp, message: Message)
     axios.get("https://fortnite-api.com/v2/shop/br")
             .then(data =>
                 {
-                    const daily = data.data.data.daily.entries;
+                    const entries = data.data.data.daily.entries;
+                    entries.push(...data.data.data.featured?.entries??[]);
+                    entries.push(...data.data.data.specialFeatured?.entries??[]);
+                    entries.push(...data.data.data.specialDaily?.entries??[]);
+                    
                     let msg = "";
                     msg += "En la tienda de fortnite hoy hay lo siguiente: \n\n";
-                    for (let i = 0; i < daily.length; i++) {
-                        const entry = daily[i];
+                    for (let i = 0; i < entries.length; i++) {
+                        
+                        const entry = entries[i];
+                        if (entry.bundle)
+                            continue;
                         const price = entry.finalPrice;
                         for(let j = 0; j < entry.items.length; j++)
                         {
