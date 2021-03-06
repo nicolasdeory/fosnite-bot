@@ -27,6 +27,11 @@ function bot(client: venom.Whatsapp)
     ];
 
     const alive = new Alive(client);
+    client.onAddedToGroup(chat =>
+    {
+        // isn't triggered for some reason
+        client.sendText(chat.id.id, "Hola!! Gracias por añadirme. Puedes decir !help para ver una lista de comandos posibles.");
+    });
 
     client.onAnyMessage((message) =>
     {
