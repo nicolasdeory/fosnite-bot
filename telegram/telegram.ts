@@ -1,4 +1,4 @@
-import ligaScraper from "./commands/ligaScraper";
+import ligaScraper from "./commands/ligaBot";
 import api from "./telegram-api";
 
 interface Command {
