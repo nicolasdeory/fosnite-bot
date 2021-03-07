@@ -32,7 +32,8 @@ interface Match
 
 interface ScrapedMatch {
     time: string,
-    match: string
+    match: string,
+    league: string
 }
 
 // remove messages older than 10 minutes, every ATTENTION_CLEAR_INTERVAL seconds
@@ -53,7 +54,9 @@ const TEAM_ABBREVIATIONS: Record<string,Array<string>> = {
     "juventus": ["juve"]
 }
 
-const EXCLUDED_WORDS = ["fc", "cf", "real", "de", "ac"];
+const EXCLUDED_WORDS = ["fc", "cf", "real", "de", "ac","st"];
+
+const MATCH_MESSAGE = "-- *{0}* vs *{1}* --\n\nPuedes verlo en {2}\nEscribe !helpfutbol para saber más.";
 
 class LigaScraper
 {
@@ -81,11 +84,11 @@ class LigaScraper
 
     getTeamShortName(fullName: string): string
     {
-        const normalized = fullName.toLowerCase().normalize("NFD");
+        const normalized = fullName.toLowerCase().normalize("NFD").replace(/[.,:]/g, "");
         const alternatives = normalized.split(" ");
         for (let i = 0; i < alternatives.length; i++) {
             const alt = alternatives[i].trim();
-            if (alt.length < 3 || EXCLUDED_WORDS.indexOf(alt) >= 0)
+            if (alt.length < 3 || EXCLUDED_WORDS.indexOf(alt) >= 0 || alt.indexOf(".") >= 0)
                 alternatives.splice(alternatives.indexOf(alt), 1);
             
             if (alt in TEAM_ABBREVIATIONS)
@@ -104,6 +107,7 @@ class LigaScraper
                 listItem: "tbody tr",
                 data: {
                     time: "td:nth-child(1) span",
+                    league: "td:nth-child(3)",
                     match: "td:nth-child(3) b"
                 }
             }
@@ -118,7 +122,7 @@ class LigaScraper
                 this.watchedMatches.clear();
                 ((data as any).matches as Array<ScrapedMatch>).forEach(m =>
                 {
-                    if (!m.match)
+                    if (!m.match || m.league.toLowerCase().normalize("NFD").indexOf("baloncesto") >= 0)
                         return;
                         
                     const matches = m.match.split('vs');
@@ -165,7 +169,7 @@ function ligaBot(message: any)
     if (messageText.indexOf(".m3u8") >= 0 && (urlMatch?.length ?? 0 > 0))
     {
         // If the message contains an url
-        const url = urlMatch!.find(x => x.indexOf("http") >= 0);
+        const url = urlMatch!.find(x => x.indexOf(".m3u8") >= 0);
         if (match)
         {
             console.log(`Game link for ${match.team1.fullName}* vs *${match.team2.fullName}* detected. Sending to whatsapp`);
