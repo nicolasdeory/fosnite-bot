@@ -164,8 +164,8 @@ function ligaBot(message: any)
     const urlMatch = messageText.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g)
     if (messageText.indexOf(".m3u8") >= 0 && (urlMatch?.length ?? 0 > 0))
     {
-        // If the message has exactly one url in the message
-        const url = urlMatch![0];
+        // If the message contains an url
+        const url = urlMatch!.find(x => x.indexOf("http") >= 0);
         if (match)
         {
             console.log(`Game link for ${match.team1.fullName}* vs *${match.team2.fullName}* detected. Sending to whatsapp`);
