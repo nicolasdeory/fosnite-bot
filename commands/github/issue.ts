@@ -2,6 +2,7 @@ import axios from "axios";
 import {Message, Whatsapp} from "venom-bot";
 import conditions from "../../conditions";
 import whatsapp from "../../whatsapp";
+import { getColumnName, getIssueName as getIssue } from "./api";
 
 // Repo Id - Destination Number Id
 const repository_toMap: Record<number, string> = {
@@ -11,7 +12,7 @@ const repository_toMap: Record<number, string> = {
 /**
  * Automatic
  */
-export default function githubissue(data: any)
+export default async function githubissue(data: any)
 {
     const client = whatsapp.client;
     if (!client)
@@ -31,6 +32,16 @@ export default function githubissue(data: any)
         } else if (data.action === "assigned")
         {
             text = `${data.sender.login} assigned issue *#${data.issue.number}* - ${data.issue.title} to ${data.issue.assignee.login}.`
+        } else if (data.action === "moved")
+        {
+            const columnNameFrom = await getColumnName(data.change.column_id.from);
+            const columnNameTo = await getColumnName(data.project_card.column_id);
+            if (!data.project_card.content_url)
+                return; // it's not an issue; it's a note, so omit it
+            
+            const issue = await getIssue(data.project_card.content_url);
+
+            text = `${data.sender.login} moved issue *#${issue.number}* (${issue.title}) from ${columnNameFrom} to ${columnNameTo}`;
         }
         if (text)
             client.sendText(destination, `*-- GITHUB NOTIFICATION --*\n\n${text}`)

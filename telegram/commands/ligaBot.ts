@@ -165,7 +165,7 @@ function ligaBot(message: any)
 
     const messageText = message.message as string;
     const match = ligaScraper.messageMatchesMatch(messageText);
-    const urlMatch = messageText.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g)
+    const urlMatch = messageText.match(/(https?:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g)
     if (messageText.indexOf(".m3u8") >= 0 && (urlMatch?.length ?? 0 > 0))
     {
         // If the message contains an url
@@ -174,7 +174,7 @@ function ligaBot(message: any)
         {
             console.log(`Game link for ${match.team1.fullName}* vs *${match.team2.fullName}* detected. Sending to whatsapp`);
             whatsapp.client.sendText("34658780090-1614884816@g.us",
-                `-- *${match.team1.fullName}* vs *${match.team2.fullName}* --\n\nPuedes verlo en ${url}`);
+                `-- *${match.team1.fullName}* vs *${match.team2.fullName}* --\nPuedes verlo a través del siguiente enlace:\n\n${url}`);
         } else if (message.reply_to)
         {
             // is there a reply?
@@ -187,7 +187,7 @@ function ligaBot(message: any)
                 {
                     console.log(`Game link for ${repliedMessageMatch.team1.fullName}* vs *${repliedMessageMatch.team2.fullName}* detected. Sending to whatsapp`);
                     whatsapp.client.sendText("34658780090-1614884816@g.us",
-                        `-- *${repliedMessageMatch.team1.fullName}* vs *${repliedMessageMatch.team2.fullName}* --\n\nPuedes verlo en ${url}`);
+                        `-- *${repliedMessageMatch.team1.fullName}* vs *${repliedMessageMatch.team2.fullName}* --\nPuedes verlo a través del siguiente enlace:\n\n ${url}`);
                 } else
                 {
                     console.log("Received a game url but could't associate it to any interesting match");
