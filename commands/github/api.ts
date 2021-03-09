@@ -14,7 +14,7 @@ export function getColumnName(columnId: number): Promise<string>
                 "Authorization": `token ${process.env.GITHUB_TOKEN}`,
                 "Accept": "application/vnd.github.inertia-preview+json"
             }});
-        return result.data.name;
+        resolve(result.data.name);
     })
 }
 

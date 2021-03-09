@@ -38,7 +38,7 @@ export default async function githubissue(data: any)
             const columnNameTo = await getColumnName(data.project_card.column_id);
             if (!data.project_card.content_url)
                 return; // it's not an issue; it's a note, so omit it
-            
+            console.log(data.project_card);
             const issue = await getIssue(data.project_card.content_url);
 
             text = `${data.sender.login} moved issue *#${issue.number}* (${issue.title}) from ${columnNameFrom} to ${columnNameTo}`;
