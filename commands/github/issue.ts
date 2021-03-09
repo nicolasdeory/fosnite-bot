@@ -34,7 +34,7 @@ export default async function githubissue(data: any)
             text = `${data.sender.login} assigned issue *#${data.issue.number}* - ${data.issue.title} to ${data.issue.assignee.login}.`
         } else if (data.action === "moved")
         {
-            const columnNameFrom = await getColumnName(data.change.column_id.from);
+            const columnNameFrom = await getColumnName(data.changes.column_id.from);
             const columnNameTo = await getColumnName(data.project_card.column_id);
             if (!data.project_card.content_url)
                 return; // it's not an issue; it's a note, so omit it
