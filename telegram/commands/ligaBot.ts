@@ -122,10 +122,17 @@ class LigaScraper
                 this.watchedMatches.clear();
                 ((data as any).matches as Array<ScrapedMatch>).forEach(m =>
                 {
-                    if (!m.match || m.league.toLowerCase().normalize("NFD").indexOf("baloncesto") >= 0)
+                    if (!m.match)
                         return;
                         
+                    const normalizeLeague = m.league.toLowerCase().normalize("NFD");
+                    if (normalizeLeague.indexOf("baloncesto") >= 0 || normalizeLeague.indexOf("tenis"))
+                        return;
+                    
                     const matches = m.match.split('vs');
+                    if (matches.length != 2)
+                        return;
+
                     const team1: Team = {
                         fullName: matches[0].trim(),
                         shortName: this.getTeamShortName(matches[0].trim())
