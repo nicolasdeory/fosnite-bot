@@ -10,7 +10,7 @@ export default {
      * Also matches lowercase and accented
      */
     contains: (text: string) => {
-        return (m: string) => m.toLowerCase().normalize("NFD").indexOf(text) >= 0;
+        return (m: string) => m.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").indexOf(text) >= 0;
     },
     /**
      * At least one condition met
