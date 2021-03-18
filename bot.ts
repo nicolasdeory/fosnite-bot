@@ -8,6 +8,7 @@ import gracias from "./commands/gracias";
 import cardano from "./commands/cardano";
 import fortniteDance from "./commands/fortnite-dance";
 import Alive from "./alive";
+import zombie from "./commands/zombie";
 
 interface Command {
     match: (m: string) => boolean,
@@ -23,7 +24,8 @@ function bot(client: venom.Whatsapp)
         fortnite,
         nopuedo,
         fortniteDance,
-        gracias
+        gracias,
+        zombie
     ];
 
     const alive = new Alive(client);
