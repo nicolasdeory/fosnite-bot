@@ -8,7 +8,7 @@ interface Command {
 }
 
 const commands:Array<Command> = [
-    ligaScraper
+   // ligaScraper
 ]
 
 async function init()
